@@ -20,7 +20,7 @@
 
 #include <ralink_board.h>
 
-#define SYS_SHELL		"/bin/sh"
+#define SYS_SHELL		"/usr/bin/bash"
 #define SYS_EXEC_PATH		"/usr/sbin:/usr/bin:/sbin:/bin"
 #define SYS_EXEC_PATH_OPT	"/opt/sbin:/opt/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 #define SYS_HOME_PATH_ROOT	"/home/admin"
