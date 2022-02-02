@@ -37,6 +37,8 @@
 #define SYS_START_YEAR			2015
 
 #define DNS_RESOLV_CONF			"/etc/resolv.conf"
+#define DNS_RESOLV_AUTO			"/tmp/resolv.conf.auto"
+#define DNSMASQ_TMP_DIR			"/tmp/dnsmasq.d"
 #define DNS_SERVERS_FILE		"/tmp/dnsmasq.servers"
 #define DNS_RELAY_QUERIES_MAX		512
 

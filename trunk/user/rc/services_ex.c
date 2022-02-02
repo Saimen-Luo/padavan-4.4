@@ -315,8 +315,10 @@ start_dns_dhcpd(int is_ap_mode)
 		/* create /etc/hosts (run after fill_static_ethers!) */
 		update_hosts_router(ipaddr);
 		
-		/* touch resolv.conf if not exist */
-		create_file(DNS_RESOLV_CONF);
+		/* touch /tmp/resolv.conf.auto if not exist */
+		create_file(DNS_RESOLV_AUTO);
+		/* mkdir /tmp/dnsmasq.d if not exist */
+		mkdir_if_none(DNSMASQ_TMP_DIR, "777");
 	}
 
 	/* create /etc/dnsmasq.conf */
@@ -325,6 +327,7 @@ start_dns_dhcpd(int is_ap_mode)
 
 	fprintf(fp, "user=%s\n"
 		    "resolv-file=%s\n"
+		    "conf-dir=%s\n"
 		    "no-poll\n"
 		    "bogus-priv\n"
 		    "no-negcache\n"
@@ -332,7 +335,8 @@ start_dns_dhcpd(int is_ap_mode)
 		    "bind-dynamic\n"
 		    "interface=%s\n",
 		    SYS_USER_NOBODY,
-		    DNS_RESOLV_CONF,
+		    DNS_RESOLV_AUTO,
+		    DNSMASQ_TMP_DIR,
 		    IFNAME_BR);
 
 	if (!is_ap_mode) {
